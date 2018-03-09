@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.doublestarWeb.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cn.doublestarWeb.domain.User">
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="isdelete" jdbcType="BIT" property="isdelete" />
+    <result column="car_license" jdbcType="VARCHAR" property="carLicense" />
+    <result column="position" jdbcType="VARCHAR" property="position" />
+    <result column="photo" jdbcType="VARCHAR" property="photo" />
+    <result column="cancel_number" jdbcType="INTEGER" property="cancelNumber" />
+    <result column="tire_number" jdbcType="INTEGER" property="tireNumber" />
+    <result column="threshold_low" jdbcType="INTEGER" property="thresholdLow" />
+    <result column="threshold_up" jdbcType="INTEGER" property="thresholdUp" />
+    <result column="temperature_low" jdbcType="INTEGER" property="temperatureLow" />
+    <result column="temperature_high" jdbcType="INTEGER" property="temperatureHigh" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    Id, username, password, nickname, isdelete, car_license, position, photo, cancel_number, 
+    tire_number, threshold_low, threshold_up, temperature_low, temperature_high
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.cn.doublestarWeb.domain.User">
+    insert into user (Id, username, password, 
+      nickname, isdelete, car_license, 
+      position, photo, cancel_number, 
+      tire_number, threshold_low, threshold_up, 
+      temperature_low, temperature_high)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR}, #{isdelete,jdbcType=BIT}, #{carLicense,jdbcType=VARCHAR}, 
+      #{position,jdbcType=VARCHAR}, #{photo,jdbcType=VARCHAR}, #{cancelNumber,jdbcType=INTEGER}, 
+      #{tireNumber,jdbcType=INTEGER}, #{thresholdLow,jdbcType=INTEGER}, #{thresholdUp,jdbcType=INTEGER}, 
+      #{temperatureLow,jdbcType=INTEGER}, #{temperatureHigh,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.cn.doublestarWeb.domain.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        Id,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="isdelete != null">
+        isdelete,
+      </if>
+      <if test="carLicense != null">
+        car_license,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="photo != null">
+        photo,
+      </if>
+      <if test="cancelNumber != null">
+        cancel_number,
+      </if>
+      <if test="tireNumber != null">
+        tire_number,
+      </if>
+      <if test="thresholdLow != null">
+        threshold_low,
+      </if>
+      <if test="thresholdUp != null">
+        threshold_up,
+      </if>
+      <if test="temperatureLow != null">
+        temperature_low,
+      </if>
+      <if test="temperatureHigh != null">
+        temperature_high,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="carLicense != null">
+        #{carLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelNumber != null">
+        #{cancelNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tireNumber != null">
+        #{tireNumber,jdbcType=INTEGER},
+      </if>
+      <if test="thresholdLow != null">
+        #{thresholdLow,jdbcType=INTEGER},
+      </if>
+      <if test="thresholdUp != null">
+        #{thresholdUp,jdbcType=INTEGER},
+      </if>
+      <if test="temperatureLow != null">
+        #{temperatureLow,jdbcType=INTEGER},
+      </if>
+      <if test="temperatureHigh != null">
+        #{temperatureHigh,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cn.doublestarWeb.domain.User">
+    update user
+    <set>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=BIT},
+      </if>
+      <if test="carLicense != null">
+        car_license = #{carLicense,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=VARCHAR},
+      </if>
+      <if test="photo != null">
+        photo = #{photo,jdbcType=VARCHAR},
+      </if>
+      <if test="cancelNumber != null">
+        cancel_number = #{cancelNumber,jdbcType=INTEGER},
+      </if>
+      <if test="tireNumber != null">
+        tire_number = #{tireNumber,jdbcType=INTEGER},
+      </if>
+      <if test="thresholdLow != null">
+        threshold_low = #{thresholdLow,jdbcType=INTEGER},
+      </if>
+      <if test="thresholdUp != null">
+        threshold_up = #{thresholdUp,jdbcType=INTEGER},
+      </if>
+      <if test="temperatureLow != null">
+        temperature_low = #{temperatureLow,jdbcType=INTEGER},
+      </if>
+      <if test="temperatureHigh != null">
+        temperature_high = #{temperatureHigh,jdbcType=INTEGER},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cn.doublestarWeb.domain.User">
+    update user
+    set username = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=BIT},
+      car_license = #{carLicense,jdbcType=VARCHAR},
+      position = #{position,jdbcType=VARCHAR},
+      photo = #{photo,jdbcType=VARCHAR},
+      cancel_number = #{cancelNumber,jdbcType=INTEGER},
+      tire_number = #{tireNumber,jdbcType=INTEGER},
+      threshold_low = #{thresholdLow,jdbcType=INTEGER},
+      threshold_up = #{thresholdUp,jdbcType=INTEGER},
+      temperature_low = #{temperatureLow,jdbcType=INTEGER},
+      temperature_high = #{temperatureHigh,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
